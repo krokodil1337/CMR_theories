@@ -1,0 +1,402 @@
+\documentclass[a4paper,reqno]{amsart}
+\usepackage[english]{babel}
+%\usepackage[applemac]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{hyperref}
+\usepackage{slashed}
+\usepackage{graphicx,color}
+\usepackage[bbgreekl]{mathbbol}
+\usepackage{mathtools}
+\usepackage[all,cmtip]{xy}
+
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{corollary}{Corollary}
+
+
+
+%\newenvironment{definition}{\begin{definizione}}{\newline \phantom{.}\hfill $\bullet$ \end{definizione} }
+
+\newtheorem{remark}[definition]{Remark}
+
+%\newenvironment{remark}{\begin{Remark}}{\newline \phantom{.} \hfill $\maltese$ \end{Remark}}
+\newcommand{\g}{\mathfrak{g}}
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\de}{\partial}
+\newcommand{\X}[1]{(X_{#1})}
+\newcommand{\HX}[1]{(\widehat{X}_{#1})}
+\renewcommand{\qedsymbol}{$\checkmark$}
+\newcommand{\ev}[1]{\textbf{#1}\index{#1}}
+\newcommand{\qsp}[2]{\,\ensuremath{\raise.5ex\hbox{$#1$}\big\slash\raise-.5ex\hbox{$#2$}}} 
+\newcommand{\smoo}{\mathcal{C}^\infty}
+\newcommand{\pard}[2]{\frac{\delta#1}{\delta#2}}
+\newcommand{\ber}{\mathrm{Ber}}
+\newcommand{\str}[1]{\mathrm{Str}\left[#1\right]}
+\newcommand{\tr}[1]{\mathrm{Tr}\left[#1\right]}
+\newcommand{\trasp}[1]{\prescript{t\!}{}{#1}}
+\newcommand{\rpar}[2]{\frac{#1\!\!\stackrel{\leftarrow}{\partial}}{\partial z^{#2}}}
+\newcommand{\txi}[1]{\widetilde{\xi}^{#1}}
+\newcommand{\tJ}[1]{\widetilde{J}_{#1}}
+\newcommand{\tgd}[1]{\widetilde{g}^\dag{}^{#1}}
+\newcommand{\tg}{\widetilde{g}}
+\newcommand{\tgam}{\widetilde{\gamma}}
+\newcommand{\sfJ}{\mathsf{J}}
+\newcommand{\sfg}{\mathsf{g}}
+\newcommand{\bb}{\mathsf{b}}
+\newcommand{\nn}{{\underline{n}}}
+\newcommand{\tgr}{\widetilde{\mathrm{g}}^\partial}
+\newcommand{\tR}{\widetilde{R}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\intl}{\int\limits}
+\newcommand{\tc}{\widetilde{c}}
+\newcommand{\tom}{\widetilde{\omega}}
+\newcommand{\bom}{\boldsymbol{\omega}}
+\newcommand{\te}{\widetilde{e}}
+\newcommand{\bem}{\mathbf{e}}
+\newcommand{\be}{\mathbf{E}_\gamma}
+\newcommand{\tedl}{\widetilde{\underline{e}}^\dag}
+\newcommand{\bedl}{\mathbf{e}^\dag}
+\newcommand{\bg}{\boldsymbol{\gamma}}
+\newcommand{\bphi}{\boldsymbol{\varphi}}
+\newcommand{\bxi}{\boldsymbol{\xi}}
+\newcommand{\bpi}{\boldsymbol{\Pi}}
+\newcommand{\bc}{\mathbf{c}}
+\newcommand{\bt}{\mathbf{t}}
+\newcommand{\bod}{\boldsymbol{\omega}^\dag}
+\newcommand{\Wedge}[1]{{\textstyle \bigwedge^{#1}}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\dr}{\mathrm{d}}
+\newcommand{\LQ}{\mathcal{L}_{Q}}
+
+
+\title{Emergence of alternate theories in the BV-BFV setting}
+\author{Pavel Mnev}
+
+
+\author{Michele Schiavina}
+
+
+\author{Konstantin Wernli}
+
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+In this paper we show how the BV-BFV approach to Field Theory on manifolds with boundaries, corners, and higher codimension strata unveils ambiguities that are intrinsic of certain field theories. Given an \emph{$n$-extended theory}, i.e. a field theory for which the BV-BFV axioms hold - recursively - up to codimension $n$, we talk about the emergence of \emph{alternate theories} if, at a given codimension $k$, there exist two naturally induced functionals both satisfying the BV-BFV axioms. When this happens, the \emph{difference} $\Delta^{(k)}$ of the two functionals becomes of central relevance.
+
+Looking at the important example of Chern--Simons theory, we show that it admits an alternate at all codimensions $0< k < 3$, and we interpret the difference in codimension-one $\Delta^{(1)}$ in terms of \emph{gauged} Wess--Zumino--Witten theory, for a Lie group valued field $g\colon M \longrightarrow G$. On the one hand, we show that if we consider a on-parameter family $g_t=\mathrm{exp}(tA)$ for some Lie algebra valued function $A\colon M\longrightarrow \mathfrak{g}=\mathrm{Lie}(G)$ the difference $\Delta^{(1)}$ coincides with the linearised gauged Wess--Zumino action (that is its derivative with respect to the parameter $t$). Moreover, implementing a construction that stems from the AKSZ approach to field theory, we are able to promote a Lie-algebra-valued field to a Lie-group-valued one, thus reversing the (target) derivation procedure at the level of functionals over spaces of fields. If we denote by $S_{WZ}[A,g]$ the gauged Wess--Zumino action and $I\subset \mathbb{R}$ a closed interval, we have
+\begin{equation}
+S_{WZ}[A,g]=T_{I}^0 \Delta^{(1)}\vert_{\mathrm{dgMap}^0}
+\end{equation}
+where $T_{I}^0$ is the transgression map (on $0$-forms) coming from the AKSZ procedure,
+\begin{equation}
+\xymatrix{
+\mathrm{Map}(T[1]I, \mathcal{F}^{(1)})\times T[1]I \ar[d]_{p}   \ar[r]_-{\mathrm{ev}}  & \mathcal{F}^{(1)}\\
+\mathrm{Map}(T[1]I, \mathcal{F}^{(1)}) & 
+}
+\end{equation}
+with $\mathcal{F}^{(1)}$ the space of Chern--Simons codimension-$1$ fields, the map 
+$$T^\bullet_I\colon\Omega^\bullet\left(\mathcal{F}^{(1)}\right)\longrightarrow \Omega^\bullet\left(\mathrm{Map}(T[1]I, \mathcal{F}^{(1)})\right)$$ 
+given by the composition $T^\bullet_I:=p_* \mathrm{ev}^*$, and $\mathrm{dgMap}^{0}$ denoting the set of degree-$0$, differential graded maps in $\mathrm{Map}(T[1]I, \mathcal{F}^{(1)})$.
+
+To recover the \emph{Witten} part of the celebrated (chiral) Wess--Zumino--Witten functional, we choose a (metric dependent) polarisation $\mathcal{P}_\eta$ in $\mathcal{F}^{(1)}$ and, by changing the data consistently, we are able to show that
+\begin{equation}
+S_{WZW}[A,g;\eta]=T_{I}^0 \Delta^{(1)}_{\mathcal{P}_\eta}\vert_{\mathrm{dgMap}^0}
+\end{equation}
+with $\eta$ a choice of a metric on $M$. {\color{red} Maybe a conformal structure is enough?}
+
+\section{Main Construction}
+We will be concerned with a Lagrangian version of the classical BV-BFV approach to field theories, as presented in \cite{CMR1}. The \emph{space of fields} should be thought of as the space of $C^\infty$ sections of a (graded) fiber bundle over an $m$-dimensional spacetime manifold $M$. We allow boundaries and higher codimension data like corners, corners with boundaries, \emph{et cetera}. We denote by $\{M^{(k)}\}_{k=0\dots m}$ a stratified manifold, i.e. sumbanifolds with inclusions $\iota_k\colon M^{(k)} \longrightarrow M^{(k-1)}$, however for the most part we will not be concerned with such data directly. As a matter of fact, we will consider local functionals and local forms with values in inhomogeneous differential forms on $M$ (see Definition \ref{localforms} below), so that specifying higher codimension submanifold data in $M$ will allow us to integrate the aforementioned forms and obtain the usual BV-BFV data.
+
+%\item $\sim^{(k)}$ is an equivalence relation of codimension-$k$ submanifolds in $M$, i.e. $\iota_k \colon M^{(k)} \longrightarrow M^{(k-1)}$,
+
+\begin{definition}\label{localforms}
+A \emph{local} form on $E\longrightarrow M$, a fiber bundle on an $m$-dimensional $M$, is an element of 
+\begin{equation}
+\Omega^{\bullet,\bullet}_{\mathrm{loc}}(\mathcal{E}\times M,\delta,d) := (j^\infty)^*\Omega^{\bullet,\bullet}(J^\infty (E),d_V,d_H)
+\end{equation}
+with $\mathcal{E}:=\Gamma^\infty(M,E)$ and $j^\infty$ the limit of the maps $\{j^p\colon \mathcal{E}\times M \longrightarrow J^pE\}$. An element of $\Omega_{\mathrm{loc}}^{0,\bullet}(\mathcal{E}\times M)$ is called \emph{Local Functional}.
+\end{definition}
+
+\begin{definition}
+An n-extended, exact BV-BFV manifold, shorthanded with \emph{$n$-extended theory}, over the $m$-dimensional stratified manifold $\{M^{(k)}\}_{k=0\dots m}$ ($m\geq n$) is the data 
+$$\mathfrak{F}^{\wedge n}=(\mathcal{F}^{(k)}, \alpha^{(k)},L^{(k)}, Q)_{k=0\dots n},$$
+where, for every $k\leq n$
+\begin{itemize}
+\item $\mathcal{F}\equiv\mathcal{F}^{(0)}$, the \emph{space of fields}, is the space of sections of the bundle (or sheaf) $E\longrightarrow M^{(0)}$, and $F^{(k)}$ is the space of restrictions of fields in $\mathcal{F}$ to a tubular neighborhood of the k-stratum $M^{(k)}$,
+\item $\omega^{(k)}\coloneqq\delta\alpha^{(k)}\in\Omega_{\mathrm{loc}}^{2,k}(\mathcal{F}\times M)$ is pre-symplectic on $F^{(k)}$ , i.e. $\emph{ker}(\omega^{(k)}\vert_{F^{(k)}}^\sharp)$ is a subbundle of $TF^{(k)}$,
+\item $Q$ is a degree-1, local, evolutionary, cohomological vector field on $\mathcal{F}$, i.e. $[Q,Q]=[Q,d]=0$, 
+\item $L^{(k)}\in \Omega_{\mathrm{loc}}^{0,m-k}(\mathcal{F}\times M)$ is a degree-$k$ local functional,
+\end{itemize}
+such that
+\begin{subequations}\label{CMReqts}\begin{align}
+&  \iota_{Q} \Omega^{\bullet} = \delta L^{\bullet} + d\alpha^{(\bullet + 1)}\\\label{bracket}
+&\frac12 \iota_Q\iota_Q\Omega^\bullet = d L^{(\bullet+1)}.
+\end{align}\end{subequations}
+When $n=\mathrm{dim}(M)$ we say that the theory is \emph{fully extended}.
+\end{definition}
+
+%; for $n=0$ the data defines a BV-manifold, and for $n=1$ the data is that of an exact BV-BFV manifold.
+
+\begin{definition}[{\color{blue} Check this, it is of course a sketch. It allows us not to worry about what "class" of bordisms we are considering right away.}]
+A BV-BFV theory is the (functorial?) assignment of a BV-BFV manifold over $\{M^{(k)}\}$ for all stratified manifolds {\color{blue} in a suitable equivalence class (COMMENT: I am actually not sure that we need to separate the pseudo-Riemannian case in how we treat strata. The condition of "space-like" boundaries should be thought of at the level of fields, not the underlying topological spaces. This is how we dealt with Einstein Hilbert: an open condition in the space of Pseudoriemannian metrics on M)}
+\end{definition}
+
+
+\begin{remark}\label{otherrelations}
+Notice that from equations \eqref{CMReqts} the following relations follows (recall that $[Q,d]=0$ and $[\delta,d]=0$): 
+\begin{subequations}\begin{align}\label{mCME}
+\LQ\left(L^{\bullet}\right)& = dL_{CMR}^{(\bullet+1)}\\ \label{omegacocycle}
+\LQ \Omega^\bullet & = d\Omega^\bullet 
+\end{align}\end{subequations}
+where we adopted the notation\footnote{We call $L_{CMR}$ the CMR-Lagrangian, where CMR stands for Cattaneo, Mn\"ev, Reshetikhin.} $L^{(k+1)}_{CMR}\coloneqq \left(2L^{(k+1)} - \iota_{Q^{(k+1)}}\alpha^{(k+1)}\right)$. Because $Q$ also encodes the symmetry data of the theory, Equation \eqref{mCME} roughly measures the failure of gauge invariance of the Lagrangian in the presence of higher codimension data. We will make this statement more precise in what follows. 
+Observe that Eq. \eqref{omegacocycle} means that $\Omega^\bullet$ is an $(\LQ - d)$-cocycle, implying that 
+$$\delta (\LQ - d)\alpha^\bullet=0$$ 
+is $\delta$-closed. 
+
+\end{remark}
+
+%%%I redefined L^k -> (-1)^{m-k}L^k and \omega -> (-1)^{d-k}\omega 
+
+\begin{remark}
+In practical situations Q is defined (locally) on \emph{fields}, and extended by prolongation to the jet bundle to obtain a legitimate evolutionary vector field.
+\end{remark}
+
+
+
+\begin{definition}
+For every $k\leq m$, the complex $\Omega^{\bullet,\bullet}_{\mathrm{loc}}(\mathcal{F}\times M)$ admits a third differential given by the Lie derivative $\LQ$. We define the BV-BFV complex ({\color{red} This name is temporary?!}) to be the space of local forms endowed with the combined differential $\LQ - d$:
+\begin{equation}
+\Omega_{\mathrm{BV-BFV}}^{\bullet}(\mathcal{E}\times M, \LQ - d)
+\end{equation}
+We will use the shorthand notation $\mathbb{\Omega}^{\bullet}(\LQ - d)\equiv\Omega_{\mathrm{BV-BFV}}^{\bullet}(\mathcal{F}\times M)$, and the cohomology is denoted by $\mathbb{H}^\bullet(\LQ - d)$.
+\end{definition}
+
+
+
+
+
+\begin{remark}\label{polarisationremark}
+It is possible to modify the codimension-$k$ Lagrangian by a $d$-exact term $L^{(k)} \mapsto L^{(k)} + df^{(k+1)}$, where $f^{(k+1)}$ is a degree-$k$ local functional, and compensate this with a shift\footnote{Observe that both $\alpha^{(k+1)}$ and $f^{(k+1)}$ have the same degree, $k$.} of $\alpha^{(k+1)}$ by $\delta f^{(k+1)}$, to preserve equations \eqref{CMReqts}. This is related to the introduction of a polarisation $\mathcal{P}$ on $\mathcal{F}^{(k+1)}$ - the space of fields of a codimension $k+1$-stratum of $M$, in order to have $\alpha^{(k+1)}$ vanish on the fibers of the polarisation, as required by the quantisation procedure developed by CMR \cite{CMR2}. In that case we denote the adapted (polarised) one-form and Lagrangian functional by $\alpha^{(k+1)}_{\mathcal{P}},L^{(k)}_{\mathcal{P}}$. The new, polarised, CMR Lagrangian is clearly 
+$$L^{(k+1)}_{CMR:\mathcal{P}}=L^{(k+1)}_{CMR} - Q (f^{(k+1)}).$$
+\end{remark}
+
+\subsection{Alternates}
+
+It is reasonable to ask whether $L^{\bullet}$ and $L^{\bullet}_{CMR}$ differ, and how. There are examples in which that is not the case for at least one stratum, like in abelian BF theory, and that is when $\iota_{Q}\alpha^{\bullet} = L^{\bullet}$. We can then consider the differences
+\begin{equation}
+\Delta^{\bullet} := L^{\bullet}_{CMR} - L^{\bullet};\ \ \Delta^{\bullet}_{\mathcal{P}} := L^{\bullet}_{CMR:\mathcal{P}} - L^{\bullet}.
+\end{equation}
+
+
+\begin{lemma}\label{Deltacocycle}
+The difference $\Delta^\bullet$ is an $(\LQ - d)$ cocycle, and its $\delta$-variation vanishes.
+\end{lemma}
+
+\begin{proof}
+This is a consequence of Eq. \eqref{CMReqts}, since
+\begin{multline}
+\delta L^\bullet = \iota_Q\delta\alpha^{\bullet} - d\alpha^{(\bullet+1)} = \LQ\alpha^\bullet + \delta\iota_Q\alpha^\bullet - d\alpha^{(\bullet+1)} \iff \\
+\delta (L^\bullet-\iota_Q\alpha^\bullet) = (\LQ - d)\alpha^\bullet \iff (\LQ - d)\delta \Delta^\bullet = (\LQ - d)^2\alpha^\bullet\iff \delta (\LQ - d)\Delta = 0
+\end{multline}
+However, $\Delta^{(k)}$ is a degree $k$-local functional ($k\geq 0$) and $\LQ \alpha^{(k)} - d\alpha^{(k+1)}$ is then of degree $k+1 \geq 1$, implying that, as there are no nonzero degree constants, $(\LQ -d)\alpha^\bullet=0$.
+\end{proof}
+
+
+{\color{blue}The following definitions need to be checked and rearranged, because of Lemma \ref{Deltacocycle}.}
+
+
+
+
+
+\begin{definition}[{\color{red} TO BE CHECKED, maybe we need a definition for when $\Delta$ is a coboundary, if Lemma \ref{Deltacocycle} is true. Also the term closable is nice, because it is about making $L^\bullet$ closed under $\LQ -d$.} ]
+An n-extended theory is said to be \emph{closable} iff the differences at $k$ are cocycles $\Delta^{(k)}\in \mathbb{H}^{k}\left(\LQ-d\right)$ for all $k\leq n$.
+\end{definition}
+
+
+\begin{definition}[{\color{red} This is sort of a negative definition with respect of my comment above. We might want to reformulate this in a different way, I don't know.}]
+An n-extended theory $\mathfrak{F}^{\wedge n}$ is called \emph{unambiguous at codimension $k$} if, for $k\leq n$ there exists a degree-$(k-1)$ functional $f^{(k-1)}$ on $\mathcal{F}$ such that $\Delta^{(k)} = (\LQ-d)f^{(k-1)}$. It is said to be fully unambiguous if the condition holds for all $k\leq n$.
+\end{definition}
+
+\begin{definition}
+An n-extended theory $\mathfrak{F}^{\wedge n}$ is said to admit an \emph {alternate at condimension $k\leq n$} if $L^{(k)}_{CMR}$ satisfies the $k$-modified classical master equation. It is called \emph{fully alternate} if the condition holds for all $0<k\leq n$.
+\end{definition}
+
+
+\begin{remark}
+Notice that the condition $\Delta^{(k)}=(\LQ-d)f^{(k-1)}$ is relevant because if the theory is unambiguous, but admits an alternate at codimension $k$, we have that $L^{(k)}_{CMR}=L^{(k)}$ and $\Delta^{(k)}$ is interpreted as a \emph{polarisation term}, explaining why $L^{(k)}_{CMR}$ satisfies the mCME. On the contrary, when $\Delta^{(k)}$ is not exact we cannot interpret it as a polarisation term (cf. Remark \ref{polarisationremark}), and if it defines an alternate something new is happening.
+\end{remark}
+
+
+\begin{theorem}
+Let $\mathfrak{F}^{\wedge n}$ be a {\color{red}closable (not needed anymore?)}, n-extended theory.  
+\begin{equation}
+\mathbb{L}\coloneqq \sum_{k=0}^n L^{(k)} + k \Delta^{(k)}
+\end{equation}
+is a $\left(\LQ-d\right)$-cocycle.
+\end{theorem}
+
+\begin{proof} Since $\mathfrak{F}^{\wedge n}$ is n-extended we know that, for all $k\leq n$, $\LQ L^{(k)}=d L_{CMR}^{(k+1)}$. Moreover, $\Delta^{(k)}$ is a $(\LQ-d)$-cocycle for all $k$ ({\color{blue}because it is closable - probably not needed anymore}). We use this and $\Delta^{(k)}=L_{CMR}^{(k)} - L^{(k)}$ to compute:
+\begin{multline*}
+\LQ\left(\sum_{k=0}^n L^{(k)} + k \Delta^{(k)}\right) = \sum_{k=0}^n \left( \LQ L^{(k)} + k\LQ\Delta^{(k)}\right)= \sum_{k=0}^n\left(dL_{CMR}^{(k+1)} + k d\Delta^{(k+1)}\right) \\
+ = \sum_{k=0}^n\left(d\left(L^{(k+1)}+\Delta^{(k+1)}\right) + k d\Delta^{(k+1)}\right) = \sum_{k=0}^n d \left( L^{(k+1)} + (k+1) \Delta^{k+1}\right)
+\end{multline*}
+\end{proof}
+
+
+\subsection{Chern--Simons Theory}
+Chern--Simons theory is a fully extended field theory for Lie-algebra-valued inhomogeneous forms $\cA\in\Omega^\bullet(M)[1 - \bullet]\otimes\mathfrak{g}$ (called \emph{superfield}) on a three-dimensional manifold $M$. The zero-degree part of the theory is the usual Chern--Simons theory of connections on a (trivial) principal bundle $P\longrightarrow M$. The following definition fixes the notation:
+
+\begin{definition}
+Fully extended Chern--Simons theory for the {\color{blue}compact? unimodular? semisimple?} Lie group $G$, with $(\mathfrak{g},\ [\cdot,\cdot],\ \langle \cdot,\cdot \rangle)$ its Lie algebra endowed with an invariant inner product, is the data
+$$\mathfrak{F}_{CS}=\left(\Omega^\bullet(M)[1-\bullet]\otimes\mathfrak{g}, \alpha_{CS}^{\bullet}, L^{\bullet}_{CS}, Q_{CS}\right)$$
+where the Lagrangian functional and the one-form $\alpha^{(k)}$ in codimension $k\leq \mathrm{dim}(M) = 3$ for the superfield $\cA\in\Omega^\bullet(M)[1 - \bullet]$ read, respectively
+\begin{subequations}\begin{align}\label{CSaction}
+L^{(k)}_{CS}[\cA]  & = \left[\frac12 \langle\cA, d\cA\rangle + \frac16 \langle\cA, [\cA,\cA]\rangle\right]^{(k)}\\
+\alpha^{(k)}[\cA] & =  \mathrm{Tr} \left[\langle\cA, \delta\cA\rangle\right]^{(k)}
+\end{align}\end{subequations}
+where the apex ${}^{(k)}$ means that we are taking the $k$-form part of the inhomogeneous local forms, and the vector field $Q$ acts on fields as 
+\begin{equation}
+Q\cA = F_{\cA} = d\cA + \frac12 [\cA,\cA] 
+\end{equation}
+We shall understand the trace symbol from now on. 
+\end{definition}
+
+
+\begin{proposition}[{\color{blue}We might want to fix the wording here. The last part of the statement is lacking a proof.}]
+The fully extended theory $\mathfrak{F}_{CS}$ admits a $(1)$-alternate. Moreover, the BV-BFV extension of the alternate theory $L^{(1)}_{CMR}$ is strongly equivalent to the CMR action in codimension 2.
+\end{proposition}
+
+\begin{proof}
+In codimension $k=1$ we have
+\begin{equation}
+L^{(1)}_{CS}= cF_A + \frac12 A^\dag [c,c] - \frac12 d(Ac)
+\end{equation}
+and 
+\begin{equation}
+\Omega^{(1)} = (-1)^{3-1}\delta \alpha^{(1)} = \frac12\delta \left( A\delta A + A^\dag \delta c + c\delta A^\dag\right) =  \frac12 \delta A\delta A + \delta A^\dag\delta c
+\end{equation}
+
+The codimension-$1$ CMR action reads
+\begin{equation}
+L^{(1)}_{CMR}=cF_A + \frac14 A^\dag[c,c] - \frac14[A,A]c - \frac12 d(Ac)
+\end{equation}
+
+We choose a polarisation in the space of codimension 1 fields and we modify the boundary one form so that it vanishes on the (Lagrangian) fibers of this polarisation. We choose here a splitting of the connection field $A$ into its holomorphic and anti-holomorphic parts (resp. $A^{1,0}$ and $A^{0,1}$), and the fibers of the polarisation will be defined by $A^{1,0}$ and $c$ constant. This requires the modification of the functional $L^{(1)}$ by the functional $f_{1,0}\coloneqq \frac12\left( A^{1,0}A^{0,1} + cA^\dag \right)$ and produces the shift 
+$$\alpha^{(1)}_{1,0}\coloneqq \alpha^{(1)} + \delta f_{1,0}= A^{0,1}\delta A^{1,0} + A^\dag \delta c,$$
+which clearly vanishes on fibers with constant $A^{1,0}$ and $c$. Moreover, with
+\begin{align*}
+Qf_{1,0} =&  \frac12\left[ \partial_{A^{1,0}}c A^{0,1} - A^{1,0}\overline{\partial}_{A^{0,1}}c - \frac12[c,c] A^\dag - cF_A\right] \\
+=& - A^{1,0}\overline{\partial}_{A^{0,1}}c - \frac14[c,c]A^\dag - \frac12 c[A^{1,0},A^{0,1}]
+\end{align*}
+we can then compute the codimension-$1$ polarised CMR action, which reads
+\begin{equation}
+L^{(1)}_{CMR:1,0}=A^{1,0} \overline{\partial} c + cF_A + \frac12A^\dag[c,c] - \frac12d(Ac)
+\end{equation}
+
+The difference $\Delta^{(1)}$ and its polarised version $\Delta^{(1)}_{1,0}$ are
+\begin{equation}
+\Delta^{(1)}= -\frac14 \left( [A,A]c + [c,c]A^\dag\right);\ \ \ \ \Delta^{(1)}_{1,0}=A^{1,0} \bar{\partial} c 
+\end{equation}
+and if we compute the cohomological vector field associated with the (polarised) CMR action we obtain (dropping the sup- and subscripts for convenience)
+\begin{equation}
+Q^{(1)}_{CMR:1,0} :\begin{cases}
+Q(c) = \frac12 [c,c]\\
+Q(A^{1,0}) = \partial_{A^{1,0}} c\\
+Q(A^{0,1})= \bar{\partial}c + \bar{\partial}_{A^{0,1}} c\\
+Q(A^\dag)= F_A + \bar{\partial}A^{1,0} + [c,A^\dag]
+\end{cases}
+\end{equation}
+It is then straightforward to check that $[Q^{(1)}_{CMR:1,0},Q^{(1)}_{CMR:1,0}]=0$, and that Chern--Simons theory admits a $1$-alternate, because $\Delta^{(1)}$ is a nontrivial cocycle. In fact we can write
+\begin{equation}
+\Delta^{(1)}=- \frac{1}{12} \left[\mathcal{A}[\mathcal A, \mathcal{A}]\right]^{(1)}
+\end{equation}
+then we have the short computation
+\begin{multline}
+\langle F_{\mathcal{A}}, [\mathcal{A},\mathcal{A}] \rangle= \langle d_{\mathcal{A}}\mathcal{A}, [\mathcal{A},\mathcal{A}] \rangle - \langle[\mathcal{A},\mathcal{A}], [\mathcal{A},\mathcal{A}] \rangle=\langle d\mathcal{A}, [\mathcal{A},\mathcal{A}]\rangle = \frac13 d \langle\mathcal{A}, [\mathcal{A},\mathcal{A}]\rangle
+\end{multline}
+so that 
+$$Q\Delta^{(1)} = -\frac14 \langle F_{\mathcal{A}},[\mathcal{A},\mathcal{A}]\rangle =-\frac{1}{12} d \langle \mathcal{A},[\mathcal{A},\mathcal{A}]\rangle$$
+which again shows that $\Delta$ is a $(\LQ - d)$-cocycle. To show that it is nontrivial we pick a polynomial $F= \sum_{p}f_{2p+1}\mathcal{A}^{2p+1}$ and apply $\LQ-d$ to it:
+\begin{multline}
+(\LQ-d)F = \sum_p (2p+1) f_{2p+1}(F_{\mathcal{A}} - d\mathcal{A})\mathcal{A}^{2p} = \sum_p (2p+1) f_{2p+1}\frac12[\mathcal{A},\mathcal{A}]\mathcal{A}^{2p}
+\end{multline}
+which can only be an even polynomial in $\mathcal{A}$ and therefore will never equal $\Delta^{(1)}$.
+
+\end{proof}
+
+
+
+
+
+
+
+\subsection{Poisson $\Sigma$-model}
+
+\section{Obtaining WZW from Chern-Simons theory}
+ \begin{lemma}
+ Let $S$ denote the BV-Chern-Simons action and let $g \in C^{\infty}(M,G)$ be a large gauge transformation. Then, we have $$S[\calA^g] - S[\calA] = S[A^g] - S[A] = \frac{1}{2}\int_{\de M} \langle g^{-1}Ag, g^{-1}dg \rangle -\int_M \frac{1}{12}\langle g^{-1}dg,[g^{-1}dg,g^{-1}dg]\rangle$$. 
+\end{lemma}
+\begin{proof}
+Proof is just computations, how much to put?
+\end{proof}
+\subsection{Polarisations} 
+Now assume that we have chosen a polarisation $\calP$ on the space of boundary fields (Lagrangian, smooth leaf space) such that there exists $f^{\calP}$ such that $\alpha^{\de,\calP} := \alpha^{\de} + \delta f^{\calP}$ restricts to 0 on fibers of $\calP$\footnote{it would be good to understand a bit better why we want that.} In that case we change the action to $S^{\calP} = S + \pi^*f$. \emph{The boundary action does not change!} The CMR action changes to 
+$$S_{CMR}^{\calP} = S_{CMR} -Q^{\de}f^{\calP}.$$ 
+\subsubsection{Complex Polarisation}
+One way\footnote{Are there other known ways?} of choosing a polarisation is to choose a complex structure on the boundary surface $\Sigma $. That way one can split the space of 1-forms on $\de M$ into its Dolbeaut parts $\Omega^1(\Sigma) = \Omega^{(1,0}(\Sigma) \oplus \Omega^{(0,1)}$, where $\Omega^{(1,0)}(\Sigma)$ is the space of 1-forms that locally look like  $ f(z,\bar{z})dz $. Then the space of boundary fields splits as 
+$$ \Omega^{\bullet}(\Sigma,\g) = \Omega^0(\Sigma,\g) \oplus \Omega^{(1,0)}(\Sigma,\g) \oplus \Omega^{(0,1)}(\Sigma,\g) \oplus \Omega^{2}(\Sigma,\g) \ni c + A^z + A^{\bar{z}} + A^+.$$
+We will choose the $(c,A^z)$ polarisation and choose $f$ as 
+\begin{align*}
+f^{\calP} &= \frac{1}{2} \int_M  \langle A^z, A^{\bar{z}} \rangle + \langle c, A^+ \rangle 
+\end{align*}
+The adapted 1-form is 
+\begin{align*} 
+\alpha^{\de,\calP} &= \alpha^{\de} + \delta f  = \frac{1}{2} \int_{\de M}\langle A^z,\delta A^{\bar{z}} \rangle + \langle A^{\bar{z}} , \delta A^z \rangle + \langle c, \delta A^+ \rangle + \langle A^+, \delta c \rangle \\
+&+ \frac{1}{2}\int_{\de M} \langle \delta A^z, A^{\bar{z}} \rangle - \langle A^z ,\delta A^{\bar{z}} \rangle + \langle \delta c , A^+ \rangle - \langle c, \delta A^+ \rangle \\ 
+&= \int_{\de M} \langle A^{\bar{z}} ,\delta A^z \rangle + \langle A^+, \delta c \rangle \\
+\end{align*}
+which indeed vanishes on fibers of $\calP$ (specified by constant $c$, $A^z$). Notice also that $\delta$, like all the fields, has total degree 1.  
+\subsubsection{CMR action}
+Now we compute the $CMR$ action: 
+\begin{align*} S_{CMR}^{\calP} &= 2S^{\de} - \iota_{Q^{\de}}\alpha^{\de} = \int_{\de M} 2 \langle c, F_A \rangle + \langle A^+ ,[c,c] \rangle  - \langle A^{\bar{z}}, d_Ac \rangle - \frac{1}{2} \langle A^+, [c,c] \rangle \\ 
+&= \int_{\de M} \langle c , 2F_A - d_AA^{\bar{z}} \rangle + \frac{1}{2}\langle A^+,[c,c] \rangle  = \int_{\de M} \langle c,F_A\rangle  + \langle c, \bar\partial A^z \rangle + \frac{1}{2} \langle A^+,[c,c] \rangle \\ 
+&= \int_{\de M} \langle A^z, \bar\partial c\rangle + \langle c,F_A\rangle + \frac{1}{2} \langle A^+,[c,c] \rangle 
+\end{align*}
+where we have integrated by parts several times and used $\dr = \partial + \bar\partial$, $[A,A^z] = 1/2 [A,A]$. 
+\subsubsection{Gauge transformations} 
+Under gauge transformations the $1,0$ and $0,1$ parts of $A$ transform as 
+\begin{align*}
+(A^z)^g &= g^{-1}A^zg + g^{-1}\partial g \\
+(A^{\bar{z}})^g &= g^{-1}A^{\bar{z}}g + g^{-1}\bar\partial g \\
+\end{align*}
+Under the gauge transformation the adapted action behaves as 
+$$S^f[\calA^g]-S^f[\calA] = S^f[A^g]-S^f[A] = \int_{\de M} \langle g^{-1}A^zg, g^{-1}\bar\partial g \rangle + \frac{1}{2} \langle g^{-1} \partial g, g^{-1}\bar\partial g\rangle - WZW.$$
+\begin{proof}
+We have 
+\begin{align*}
+ f[\calA^g] - f[\calA] &= \int_{\de M} \frac{1}{2}\langle (A^z)^g,(A^{\bar{z}})^g\rangle + \int_{\de M} \langle c^g,(A^+)^g \rangle  - \int_{\de M} \frac{1}{2}\langle A^z,A^{\bar{z}} \rangle - \int_{\de M} \langle c,(A^+) \rangle
+\end{align*}
+Again, the term depending on the fields of nonzero ghost number is gauge invariant, and vanishes. From the other term we get 
+\begin{align*} f[\calA^g] - f[\calA] &= +\int_{\de M} \frac{1}{2}\left( \langle g^{-1}A^zg, g^{-1}A^{\bar{z}}g\rangle +  \langle g^{-1}\partial g, g^{-1}A^{\bar{z}}g\rangle + g^{-1}A^zg, g^{-1}\bar\partial g \rangle + \langle g^{-1} \partial g, g^{-1}\bar\partial g \right) \\
+ &- \int_{\de M} \frac{1}{2}\langle A^z,A^{\bar{z}} \rangle \\ 
+ &=   \frac{1}{2}\int_{\de M} \langle g^{-1}\partial g, g^{-1}A^{\bar{z}}g\rangle + \langle g^{-1}A^zg, g^{-1}\bar\partial g \rangle + \langle g^{-1} \partial g, g^{-1}\bar\partial g\rangle   
+\end{align*} 
+Now, since $S^f = S + f$ we get 
+\begin{align*}
+S^f[\calA^g]-S^f[\calA] &= S^f[A^g]-S^f[A] = S[A^g]- S[A] + f[A^g]-f[A] \\
+&= \int_{\de M} \frac{1}{2}\langle g^{-1}Ag, g^{-1}dg \rangle - WZW  \\ 
+&+ \frac{1}{2}\int_{\de M} \langle g^{-1}\partial g, g^{-1}A^{\bar{z}}g\rangle + \langle g^{-1}A^zg, g^{-1}\bar\partial g \rangle + \langle g^{-1} \partial g, g^{-1}\bar\partial g\rangle  \\ 
+&= \int_{\de M} \langle g^{-1}A^zg, g^{-1}\bar\partial g \rangle + \frac{1}{2} \langle g^{-1} \partial g, g^{-1}\bar\partial g\rangle - WZW
+\end{align*}
+\end{proof}
+Now, if we assume that $g_t$ is a time-dependent family of gauge transformations starting at $g_0 = \mathrm{id}$, we can write 
+$$\frac{d}{dt} S^f[\calA^{g_t}] - S^f[\calA^{g_0}] = \int_{\de M} A^z\bar\de(\dot{g}_tg_t^{-1}).$$
+{\color{red}Why Is this true when $t$ is not zero? I know we discussed it many times but I cannot remember whether we had an argument for that or not.}
+\end{document}
